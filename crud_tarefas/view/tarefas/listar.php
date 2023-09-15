@@ -1,22 +1,22 @@
 <?php
-    // Página view para listagem de alunos
+    // Página view para listagem de Tarefa
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     
-    require_once(__DIR__."/../../controller/AlunoController.php");
+    require_once(__DIR__."/../../controller/TarefaController.php");
     // require_once()
 
-    $alunoCont = new AlunoController();
-    $alunos = $alunoCont->listar();
-    // print_r($alunos);
+    $tarefaCont = new TarefaController();
+    $tarefa = $tarefaCont->listar();
+    // print_r($tarefa);
 ?>
 
     <?php
         require(__DIR__."/../include/header.php");
     ?>
 
-    <h4 style="color:blueviolet;">Listagem de Alunos</h4>
+    <h4 style="color:blueviolet;">Listagem de Tarefas</h4>
 
     <div>
         <a class="btn btn-sucess" href="inserir.php">Inserir</a>
@@ -26,10 +26,10 @@
 
             <thead >
                 <tr>
-                    <td>Nome</td>
-                    <td>Idade</td>
-                    <td>Estrangeiro</td>
-                    <td>Curso</td>
+                    <td>Titulo</td>
+                    <td>Descricao</td>
+                    <td>Data de criação</td>
+                    <td>Status</td>  /*( pendente, em andamento, concluída) */
                     <td>Alterar</td>
                     <td>Excluir</td>
                 </tr>

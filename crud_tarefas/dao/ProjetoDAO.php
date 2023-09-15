@@ -2,9 +2,9 @@
     // DAO para Curso
 
     require_once(__DIR__."/../util/Connection.php");
-    require_once(__DIR__."/../model/Curso.php");
+    require_once(__DIR__."/../model/Usuario.php");
 
-    class CursoDAO {
+    class ProjetoDAO {
 
         private $conn;
 
@@ -13,7 +13,7 @@
         }
         
         public function list() {
-            $sql = "SELECT * FROM cursos";
+            $sql = "SELECT * FROM projetos";
             $stm = $this->conn->prepare($sql);
             $stm->execute();
             $result = $stm->fetchAll();
@@ -24,15 +24,16 @@
 
         private function mapBancoParaObjeto($result) {
 
-            $cursos = array();
+            $tarefas = array();
                 foreach($result as $reg) {
-                    $c = new Curso();
-                    $c->setId($reg['id'])->setNome($reg['nome'])->setturno($reg['turno']);
+                    $t = new Tarefa();
+                    $t->setId($reg['id'])->setTitulo($reg['titulo'])->setDescricao($reg['descricao'])->setDtCriacao($reg['dtCriacao'])
+                    ->setTrStatus($reg['trStatus'])->setUsuario($reg['usuario'])->setProjeto($reg['projeto']);
                 
-                    array_push($cursos, $c);
+                    array_push($tarefas, $t);
                 }
 
-            return $cursos;
+            return $tarefas;
         }
 
     }
