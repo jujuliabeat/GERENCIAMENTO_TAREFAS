@@ -1,26 +1,29 @@
 <?php
-// Classe service para aluno
-    require_once(__DIR__."/../model/Aluno.php");
+// Classe service para tarefa
+    require_once(__DIR__."/../model/Tarefa.php");
 
-    class AlunoService {
+    class TarefaService {
 
-        public function validarDados(Aluno $aluno) {
+        public function validarDados(Tarefa $tarefaService) {
             $erros = array();
             
             // Validar nome
-            if (! $aluno->getNome()) {
-                array_push($erros, "Informe o nome!");
+            if (! $tarefaService->getTitulo()) {
+                array_push($erros, "Informe o Título!");
 
-            } if (! $aluno->getIdade()) {
-                array_push($erros, "Informe a idade!");
+            } if (! $tarefaService->getDescricao()) {
+                array_push($erros, "Informe a Descrição!");
 
-            } if (! $aluno->getEstrangeiro()) {
-                array_push($erros, "Informe se é estrangeiro!");
+            } if (! $tarefaService->getDtCriacao()) {
+                array_push($erros, "Informe a data de criação!");
+
+            } if (! $tarefaService->getTrStatus()) {
+                array_push($erros, "Informe os status!");
             }
 
-            if(! $aluno->getCurso()) {
+            /*/if(! $tarefaService->getCurso()) {
                 array_push($erros, "Informe o curso!");
-            }
+            }/*/
 
             return $erros;
             

@@ -17,7 +17,7 @@ include_once(__DIR__ . "/view/include/header.php");
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
                     <a href="<?= BASE_URL ?>/view/alunos/listar.php" class="card-link">
-                        Listagem de Alunos</a>
+                        Listagem de Tarefas</a>
                 </li>
             </ul>
         </div>

@@ -1,52 +1,51 @@
 <?php
-    // Controller para Aluno
+    //Controller para Tarefas
 
-    require_once(__DIR__."/../dao/AlunoDAO.php");
-    require_once(__DIR__."/../model/Aluno.php");
-    require_once(__DIR__."/../service/AlunoService.php");
+    require_once(__DIR__."/../dao/TarefaDAO.php");
+    require_once(__DIR__."/../model/Tarefa.php");
+    require_once(__DIR__."/../service/TarefaService.php");
     
     class TarefaController {
 
-        private $alunoDAO;
-        private $alunoService;
+        private $tarefaDAO;
+        private $tarefaService;
 
         public function __construct() {
-            $this->alunoDAO =  new AlunoDAO;
-            $this->alunoService =  new AlunoService;
+            $this->tarefaDAO =  new TarefaDAO;
+            $this->tarefaService =  new TarefaService;
         }
 
         public function listar() {
-           return $this->alunoDAO->list();
+           return $this->tarefaDAO->list();
         }
 
         public function buscarPorId(int $id) {
-            return $this->alunoDAO->findById($id);
+            return $this->tarefaDAO->findById($id);
         }
 
-        public function inserir(Aluno $aluno) {
+        public function inserir(Tarefa $tarefa) {
             // Valida e retorna os erros caso exista
-            $erros = $this->alunoService->validarDados($aluno);
+            $erros = $this->tarefaService->validarDados($tarefa);
 
             if ($erros)
                 return $erros;     
                 
             // Persiste o objeto e retorna uma array vazia
-            $this->alunoDAO->insert($aluno);
+            $this->tarefaDAO->insert($tarefa);
             return array();
         }
 
-        public function atualizar(Aluno $aluno) {
-            $erros = $this->alunoService->validarDados($aluno);
+        public function atualizar(Tarefa $tarefa) {
+            $erros = $this->tarefaService->validarDados($tarefa);
             if($erros) 
                 return $erros;
             
             //Persiste o objeto e retorna um array vazio
-            $this->alunoDAO->update($aluno);
+            $this->tarefaDAO->update($tarefa);
             return array();
         }
         public function excluirPorId(int $id) {
-           $this->alunoDAO->deleteByID($id);
+           $this->tarefaDAO->deleteByID($id);
         }
 
 }
-?>

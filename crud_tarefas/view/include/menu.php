@@ -18,8 +18,8 @@ require_once(__DIR__ . "/../../util/config.php");
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navDropDown" data-toggle="dropdown">Cadastros</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?= BASE_URL ?>/view/alunos/listar.php">Alunos</a>
-                    <a class="dropdown-item" href="#">Turmas</a>
+                    <a class="dropdown-item" href="<?= BASE_URL ?>/view/Projeto/listar.php">Projetos</a>
+                    <a class="dropdown-item" href="#">usuarios</a>
                 </div>
             </li>
             <li class="nav-item">

@@ -1,20 +1,17 @@
 <?php
+    
+//model para Usuario 
 
+require_once(__DIR__."/../util/Connection.php");
 
-    class Usuario {
+class Usuario {
 
-        private ?int $id;
-        private ?string $nome;
-        private ?string $email;
-        private ?string $senhar;
+    private ?int $id;
+    private ?String $nome;
+    private ?String $email;
+    private ?String $senhar;
 
-
-        public function __toString()
-        {
-                return $this->nome. " (" . $this->email . ") ";
-        }
-
-        public function getId(): ?int
+    public function getId(): ?int
         {
                 return $this->id;
         }
@@ -25,46 +22,42 @@
 
                 return $this;
         }
-
-       
-        public function getNome(): ?string
+        
+        public function getNome(): ?String
         {
                 return $this->nome;
         }
 
-        
-        public function setNome(?string $nome): self
+        public function setNome(?int $nome): self
         {
                 $this->nome = $nome;
 
                 return $this;
         }
 
-        
-        public function getEmail(): ?string
+        public function getEmail(): ?int
         {
                 return $this->email;
         }
 
-        
-        public function setEmail(?string $email): self
+        public function setEmail(?int $email): self
         {
                 $this->email = $email;
 
                 return $this;
         }
-        
-        public function getSenhar(): ?string
+
+        public function getSenhar()
         {
                 return $this->senhar;
         }
 
-        
-        public function setSenhar(?string $senhar): self
+        public function setSenhar($senhar)
         {
                 $this->senhar = $senhar;
 
                 return $this;
         }
-    }
+}
+
 ?>

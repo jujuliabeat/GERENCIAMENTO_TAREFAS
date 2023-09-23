@@ -1,5 +1,7 @@
 <?php
 
+//model para Tarefa 
+
     require_once(__DIR__ . "/Projeto.php");
     require_once(__DIR__ . "/Usuario.php");
      
@@ -8,19 +10,17 @@
         private ?int $id;
         private ?string $titulo;
         private ?string $descricao;
-        private ?String $dtCriacao;
-        private ?String $trStatus;
+        private ?string $dtCriacao;
+        private ?string $trStatus;
         private ?Usuario $usuario;
         private ?Projeto $projeto;
-
-
+    
         public function __construct() {
-
-                $this->$id = 0;
-                $this->$usuario = null;
-                $this->$projeto = null;
-
+            $this->id = 0;
+            $this->usuario = null;
+            $this->projeto = null;
         }
+    
 
         public function getId(): ?int
         {

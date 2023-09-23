@@ -1,5 +1,5 @@
 <?php
-    // Página view para listagem de Tarefa
+    // Página view para listagem de Tarefas
     ini_set('display_errors', 1);
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
@@ -8,11 +8,11 @@
     // require_once()
 
     $tarefaCont = new TarefaController();
-    $tarefa = $tarefaCont->listar();
-    // print_r($tarefa);
+    $tarefas = $tarefaCont->listar();
+    //print_r($tarefas);
 ?>
 
-    <?php
+<?php
         require(__DIR__."/../include/header.php");
     ?>
 
@@ -26,29 +26,33 @@
 
             <thead >
                 <tr>
-                    <td>Titulo</td>
-                    <td>Descricao</td>
+                    <td>Título</td>
+                    <td>Descricação</td>
                     <td>Data de criação</td>
-                    <td>Status</td>  /*( pendente, em andamento, concluída) */
+                    <td>Status da atividade</td>
+                    <td>Projeto vinculado</td>
+                    <td>Usuario vinculado</td>
                     <td>Alterar</td>
                     <td>Excluir</td>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    foreach($alunos as $a):?>
+                    foreach($tarefas as $t):?>
                         <tr>
-                            <td><?php echo $a->getNome();?></td>
-                            <td><?php echo $a->getIdade();?></td>
-                            <td><?php echo $a->getEstrangeiroTexto();?></td>
-                            <td><?php echo $a->getcurso();?></td>
+                            <td><?php echo $t->getTitulo();?></td>
+                            <td><?php echo $t->getDescricao();?></td>
+                            <td><?php echo $t->getDtCriacao();?></td>
+                            <td><?php echo $t->getTrStatus();?></td>
+                            <td><?php echo $t->getProjeto();?></td>
+                            <td><?php echo $t->getUsuario();?></td>
 
-                            <td><a href="alterar.php?idAluno=<?=$a->getId()?>">
+                            <td><a href="alterar.php?idTarefa=<?=$t->getId()?>">
                                     <img src="../../img/btn_editar.png">
                                 </a>
                             </td>
                             <td>
-                                <a href="excluir.php?idAluno=<?=$a->getId()?>"
+                                <a href="excluir.php?idTarefa=<?=$t->getId()?>"
                                  onclick=" return confirm('Confirma a exclusão?');">
                                     <img src="../../img/btn_excluir.png">
                                 </a>
@@ -66,3 +70,4 @@
 
 
     
+

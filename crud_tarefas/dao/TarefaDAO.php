@@ -1,8 +1,14 @@
 <?php
+    // DAO para tarefa
+    ini_set('display_errors', 1);
+    ini_set('display_startup_errors', 1);
+    error_reporting(E_ALL);
+    
 
+    // DAO será com descrições em EN
     require_once(__DIR__ . "/../util/Connection.php");
-    require_once(__DIR__ . "/../model/Projeto.php");
-    require_once(__DIR__ . "/../model/Usuario.php");
+    require_once(__DIR__ . "/../model/Tarefa.php");
+   // require_once(__DIR__ . "/../model/Curso.php");//
 
     class TarefaDAO{
 
@@ -17,10 +23,14 @@
             " VALUES(?, ?, ?, ?, ?, ?)";
 
             $stmt = $this->conn->prepare($sql);
-            $stmt->execute([$tarefa->getTitulo(), $tarefa->getDescricao(), 
-                        $tarefa->getDtCriacao(), $tarefa->getTrStatus(), $tarefa->getUsuario(), 
-                        $tarefa->getProjeto()]);
-
+            $stmt->execute([
+                $tarefa->getTitulo(),
+                $tarefa->getDescricao(),
+                $tarefa->getDtCriacao(),
+                $tarefa->getTrStatus()->getId(),
+                $tarefa->getProjeto()->getId(),
+                $tarefa->getUsuario()->getId() 
+            ]);
         }
 
         public function update(Tarefa $tarefa) {
@@ -30,9 +40,15 @@
                 " dtCriacao = ?, TrStatus = ?, id_projeto = ?, id_usuario = ?".
                 " WHERE id = ?";
             $stmt = $conn->prepare($sql);
-            $stmt->execute([$tarefa->getTitulo(), $tarefa->getDescricao(), 
-                            $tarefa->getDtCriacao(), $tarefa->getTrStatus()->getUsuario(),
-                            $tarefa->getProjeto()]);
+            $stmt->execute([
+                $tarefa->getTitulo(),
+                $tarefa->getDescricao(),
+                $tarefa->getDtCriacao(),
+                $tarefa->getTrStatus()->getId(),
+                $tarefa->getProjeto()->getId(),
+                $tarefa->getUsuario()->getId(),
+                $tarefa->getId()
+            ]);
         }
     
         public function deleteById(int $id) {
@@ -44,64 +60,72 @@
         }
 
         public function list() {
-            $sql = "SELECT a.*," . 
-            " c.nome AS nome_usuario, c.turno As turno_curso".
-            " FROM tarefas a".
-            " JOIN usuario c ON (c.id = a.id_usuario)" . 
-            " ORDER BY a.nome";
-            $stm = $this->conn->prepare($sql);
-            $stm->execute();
-            $result = $stm->fetchAll();
-
+            $sql = "SELECT t.*, " . 
+                   " u.nome AS nome_usuario, " . 
+                   " p.nome AS nome_projeto" . 
+                   " FROM tarefas t" .
+                   " JOIN usuarios u ON (u.id = t.id_usuario)" . 
+                   " JOIN projetos p ON (p.id = t.id_projeto)" . 
+                   " ORDER BY t.titulo";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->execute();
+            $result = $stmt->fetchAll();
+        
             return $this->mapBancoParaObjeto($result);
-
         }
 
         public function findById(int $id) {
             $conn = Connection::getConnection();
     
             $sql = "SELECT a.*," . 
-                    " c.nome AS nome_usuario, c.turno AS turno_curso" . 
-                    " FROM tarefas a" .
-                    " JOIN usuario c ON (c.id = a.id_usuario)" .
+                    " c.nome AS nome_curso, c.turno AS turno_curso" . 
+                    " FROM alunos a" .
+                    " JOIN cursos c ON (c.id = a.id_curso)" .
                     " WHERE a.id = ?";
     
             $stmt = $conn->prepare($sql);
             $stmt->execute([$id]);
             $result = $stmt->fetchAll();
     
-            $tarefas = $this->mapBancoParaObjeto($result);
+            //Criar o objeto Tarefa
+            $tarefass = $this->mapBancoParaObjeto($result);
     
-            if(count($tarefas) == 1)
-                return $tarefas[0];
-            elseif(count($tarefas) == 0)
+            if(count($tarefass) == 1)
+                return $tarefass[0];
+            elseif(count($tarefass) == 0)
                 return null;
     
-            die("ProjetoDAO.findById - Erro: mais de uma tarefa".
+            die("TarefaDAO.findById - Erro: mais de uma tarefa".
                     " encontrado para o ID " . $id);
         }
     
 
         private function mapBancoParaObjeto($result){
-            $tarefas = array();
-
+            $tarefass = array();
+    
             foreach($result as $reg){
-                $tarefa = new Projeto();
-                $tarefa->setId($reg['id']);
-                $tarefa->setTitulo($reg['titulo']);
-                $tarefa->setDescricao($reg['descricao']);
-                $tarefa->setDtCriacao($reg['dtCriacao']);
-
-            $curso = new Usuario();
-            $curso->setId($reg['id_usuario'])
-                    ->setNome($reg['nome_usuario'])
-                    ->setTurno($reg['turno_curso']);
-
-            $tarefa->setCurso($curso);
+                $tarefas = new Tarefa();
+                $tarefas->setId($reg['id']);
+                $tarefas->setTitulo($reg['titulo']);
+                $tarefas->setDescricao($reg['descricao']);
+                $tarefas->setDtCriacao($reg['dtCriacao']);
+                $tarefas->setTrStatus($reg['TrStatus']);
+    
+                // Setar o usuário e o projeto
+                $usuario = new Usuario();
+                $usuario->setId($reg['id_usuario']);
+                $usuario->setNome($reg['nome_usuario']);
+    
+                $projeto = new Projeto();
+                $projeto->setId($reg['id_projeto']);
+                $projeto->setNome($reg['nome_projeto']);
+    
+                $tarefas->setUsuario($usuario);
+                $tarefas->setProjeto($projeto);
                 
-            array_push($tarefas, $tarefa);
+                array_push($tarefass, $tarefas);
             }
-            return $tarefas;
+            return $tarefass;
         }
     }
 ?>
