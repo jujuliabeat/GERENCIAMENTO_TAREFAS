@@ -2,6 +2,7 @@
     //Controller para Tarefas
 
     require_once(__DIR__."/../dao/TarefaDAO.php");
+    require_once(__DIR__."/../dao/UsuarioDAO.php");
     require_once(__DIR__."/../model/Tarefa.php");
     require_once(__DIR__."/../service/TarefaService.php");
     
@@ -17,6 +18,11 @@
 
         public function listar() {
            return $this->tarefaDAO->list();
+        }
+        
+        public function exibirFormulario() {
+            $usuarioDAO = new UsuarioDAO();
+            $usuarios = $usuarioDAO->listarUsuarios(); 
         }
 
         public function buscarPorId(int $id) {

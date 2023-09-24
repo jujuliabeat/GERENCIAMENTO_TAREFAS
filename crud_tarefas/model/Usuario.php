@@ -35,7 +35,7 @@ class Usuario {
                 return $this;
         }
 
-        public function getEmail(): ?int
+        public function getEmail(): ?String
         {
                 return $this->email;
         }

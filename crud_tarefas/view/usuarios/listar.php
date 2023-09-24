@@ -4,21 +4,19 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     
-    require_once(__DIR__."/../../controller/TarefaController.php");
+    require_once(__DIR__."/../../controller/UsuarioController.php");
     // require_once()
 
-    $tarefaCont = new TarefaController();
-    $tarefas = $tarefaCont->listar();
-    //print_r($tarefas);
+    $usuarioCont = new UsuarioController();
+    $usuarios = $usuarioCont->listarUsuarios();
+    //print_r($usuarios);
 ?>
 
-<div class="geral justify-content-center">
-    <?php
-
+<?php
         require(__DIR__."/../include/header.php");
     ?>
 
-    <h4 style="color:blueviolet;">Listagem de Geral</h4>
+    <h4 style="color:blueviolet;">Usuários registrados</h4>
 
     <div>
         <a class="btn btn-sucess" href="inserir.php">Inserir</a>
@@ -28,33 +26,25 @@
 
             <thead >
                 <tr>
-                    <td>Título</td>
-                    <td>Descricação</td>
-                    <td>Data de criação</td>
-                    <td>Status da atividade</td>
-                    <td>Projeto vinculado</td>
-                    <td>Usuario vinculado</td>
+                    <td>Nome</td>
+                    <td>E-mail</td>
                     <td>Alterar</td>
                     <td>Excluir</td>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    foreach($tarefas as $t):?>
+                    foreach($usuarios as $t):?>
                         <tr>
-                            <td><?php echo $t->getTitulo();?></td>
-                            <td><?php echo $t->getDescricao();?></td>
-                            <td><?php echo $t->getDtCriacao();?></td>
-                            <td><?php echo $t->getTrStatus();?></td>
-                            <td><?php echo $t->getProjeto()->getId();?></td>
-                            <td><?php echo $t->getUsuario()->getId();?></td>
+                            <td><?php echo $t->getNome();?></td>
+                            <td><?php echo $t->getEmail();?></td>
 
-                            <td><a href="alterar.php?idTarefa=<?=$t->getId()?>">
+                            <td><a href="alterar.php?idUsuario=<?=$t->getId()?>">
                                     <img src="../../img/btn_editar.png">
                                 </a>
                             </td>
                             <td>
-                                <a href="excluir.php?idTarefa=<?=$t->getId()?>"
+                                <a href="excluir.php?idUsuario=<?=$t->getId()?>"
                                  onclick=" return confirm('Confirma a exclusão?');">
                                     <img src="../../img/btn_excluir.png">
                                 </a>
@@ -69,7 +59,7 @@
     <?php
         require(__DIR__."/../include/footer.php");
     ?>
-</div>
+
 
     
 

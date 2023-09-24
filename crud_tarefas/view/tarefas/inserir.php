@@ -23,7 +23,7 @@
         $idProjeto = trim($_POST['projeto']) ? trim( $_POST['projeto'] ): null;
         $idUsuario = trim($_POST['usuario']) ? trim( $_POST['usuario'] ): null;
 
-        // Criar um Objeto aluno para persistência
+        // Criar um Objeto Tarefa para persistência
 
         $tarefa = new Tarefa();
         $tarefa->setTitulo($titulo);
@@ -44,7 +44,7 @@
         }
 
 
-        // Criar um Aluno Controller
+        // Criar um Tarefa Controller
         $tarefaCont = new TarefaController();
         $erros = $tarefaCont->inserir($tarefa);
 

@@ -53,6 +53,8 @@ $projetos = $projetoCont->listar();
     <label for="selProjeto">Projeto Vinculado:</label>
     <select name="projeto" id="selProjeto">
         <option value="">--Selecione o Projeto--</option>
+        <!--<option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
+        <option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
 
         <?php foreach ($projetos as $projeto) : ?>
             <option value="<?= $projeto->getId(); ?>" <?php
@@ -71,8 +73,21 @@ $projetos = $projetoCont->listar();
     <br>
 
     <div>
-        <label for="txtUsuario">Informe o nome do Usuário:</label>
-        <input type="number" name="usuario" id="txtUsuario" value="<?php echo ($tarefa ? $tarefa->getUsuario() : ""); ?>" />
+        <label for="selUsuario">Usuário:</label>
+            <select name="usuario" id="selUsuario">
+                <option value="">--Selecione o Usuário--</option>
+                <?php foreach ($usuarios as $usuario) : ?>
+                    <option value="<?= $usuario->getId(); ?>" <?php
+                                                                if (
+                                                                    $tarefa && $tarefa->getUsuario() &&
+                                                                    $tarefa->getUsuario()->getId() == $usuario->getId()
+                                                                )
+                                                                    echo 'selected';
+                                                                ?>>
+                        <?= $usuario->getNome(); ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
     </div>
 
     <br>
