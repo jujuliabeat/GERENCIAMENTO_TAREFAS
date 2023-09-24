@@ -11,7 +11,7 @@ $projetos = $projetoCont->listar();
 ?>
 
 <h3><?php
-    echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar')
+    echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Tarefa</h3>
 
 <form action="" method="POST" id="form">

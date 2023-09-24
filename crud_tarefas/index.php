@@ -12,11 +12,11 @@ include_once(__DIR__ . "/view/include/header.php");
         <div class="card text-center">
             <img class="card-image-top mx-auto" src="img/card_alunos.png" style="max-width: 200px; height: auto;" />
             <div class="card-body">
-                <h5 class="card-title">Alunos</h5>
+                <h5 class="card-title">Tarefas</h5>
             </div>
             <ul class="list-group list-group-flush">
                 <li class="list-group-item">
-                    <a href="<?= BASE_URL ?>/view/alunos/listar.php" class="card-link">
+                    <a href="<?=BASE_URL?>/view/tarefas/listar.php" class="card-link">
                         Listagem de Tarefas</a>
                 </li>
             </ul>
