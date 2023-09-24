@@ -18,12 +18,16 @@
                 array_push($erros, "Informe a data de criação!");
 
             } if (! $tarefaService->getTrStatus()) {
-                array_push($erros, "Informe os status!");
+                array_push($erros, "Informe o status do seu projeto!");
             }
 
-            /*/if(! $tarefaService->getCurso()) {
-                array_push($erros, "Informe o curso!");
-            }/*/
+            if(! $tarefaService->getProjeto()) {
+                array_push($erros, "Informe a qual projeto está vinculado!");
+            }
+
+            if(! $tarefaService->getUsuario()) {
+                array_push($erros, "Informe o usuário!");
+            }
 
             return $erros;
             

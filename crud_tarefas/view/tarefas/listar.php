@@ -44,8 +44,8 @@
                             <td><?php echo $t->getDescricao();?></td>
                             <td><?php echo $t->getDtCriacao();?></td>
                             <td><?php echo $t->getTrStatus();?></td>
-                            <td><?php echo $t->getProjeto();?></td>
-                            <td><?php echo $t->getUsuario();?></td>
+                            <td><?php echo $t->getProjeto()->getId();?></td>
+                            <td><?php echo $t->getUsuario()->getId();?></td>
 
                             <td><a href="alterar.php?idTarefa=<?=$t->getId()?>">
                                     <img src="../../img/btn_editar.png">

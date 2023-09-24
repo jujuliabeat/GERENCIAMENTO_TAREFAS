@@ -8,10 +8,10 @@
     class Tarefa {
 
         private ?int $id;
-        private ?string $titulo;
-        private ?string $descricao;
-        private ?string $dtCriacao;
-        private ?string $trStatus;
+        private ?String $titulo;
+        private ?String $descricao;
+        private ?String $dtCriacao;
+        private ?String $trStatus;
         private ?Usuario $usuario;
         private ?Projeto $projeto;
     
@@ -34,24 +34,24 @@
                 return $this;
         }
         
-        public function getTitulo(): ?int
+        public function getTitulo(): ?String
         {
                 return $this->titulo;
         }
 
-        public function setTitulo(?int $titulo): self
+        public function setTitulo(?String $titulo): self
         {
                 $this->titulo = $titulo;
 
                 return $this;
         }
 
-        public function getDescricao(): ?int
+        public function getDescricao(): ?String
         {
                 return $this->descricao;
         }
 
-        public function setDescricao(?int $descricao): self
+        public function setDescricao(?String $descricao): self
         {
                 $this->descricao = $descricao;
 

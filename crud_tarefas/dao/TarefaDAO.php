@@ -8,7 +8,8 @@
     // DAO será com descrições em EN
     require_once(__DIR__ . "/../util/Connection.php");
     require_once(__DIR__ . "/../model/Tarefa.php");
-   // require_once(__DIR__ . "/../model/Curso.php");//
+    require_once(__DIR__ . "/../model/Projeto.php");
+    require_once(__DIR__ . "/../model/Usuario.php");
 
     class TarefaDAO{
 
@@ -27,9 +28,9 @@
                 $tarefa->getTitulo(),
                 $tarefa->getDescricao(),
                 $tarefa->getDtCriacao(),
-                $tarefa->getTrStatus()->getId(),
+                $tarefa->getTrStatus(),
                 $tarefa->getProjeto()->getId(),
-                $tarefa->getUsuario()->getId() 
+                $tarefa->getUsuario()->getId()
             ]);
         }
 
@@ -44,9 +45,9 @@
                 $tarefa->getTitulo(),
                 $tarefa->getDescricao(),
                 $tarefa->getDtCriacao(),
-                $tarefa->getTrStatus()->getId(),
-                $tarefa->getProjeto()->getId(),
-                $tarefa->getUsuario()->getId(),
+                $tarefa->getTrStatus(),
+                $tarefa->getProjeto(),
+                $tarefa->getUsuario(),
                 $tarefa->getId()
             ]);
         }
@@ -78,9 +79,9 @@
             $conn = Connection::getConnection();
     
             $sql = "SELECT a.*," . 
-                    " c.nome AS nome_curso, c.turno AS turno_curso" . 
-                    " FROM alunos a" .
-                    " JOIN cursos c ON (c.id = a.id_curso)" .
+                    " p.nome AS nome_projeto" . 
+                    " FROM tarefas a" .
+                    " JOIN projetos p ON (p.id = a.id_projeto)" .
                     " WHERE a.id = ?";
     
             $stmt = $conn->prepare($sql);

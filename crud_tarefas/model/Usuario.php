@@ -28,7 +28,7 @@ class Usuario {
                 return $this->nome;
         }
 
-        public function setNome(?int $nome): self
+        public function setNome(?String $nome): self
         {
                 $this->nome = $nome;
 
@@ -40,7 +40,7 @@ class Usuario {
                 return $this->email;
         }
 
-        public function setEmail(?int $email): self
+        public function setEmail(?String $email): self
         {
                 $this->email = $email;
 

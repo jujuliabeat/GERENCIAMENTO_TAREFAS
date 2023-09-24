@@ -1,15 +1,15 @@
 <?php
 
-//model para Tarefa 
+//model para Projeto
 
     require_once(__DIR__ . "/Tarefa.php");
 
     class Projeto {
 
         private ?int $id;
-        private ?string $nome;
-        private ?string $descProject;
-        private ?string $dtInicio;
+        private ?String $nome;
+        private ?String $descProject;
+        private ?String $dtInicio;
     
 
         public function getId(): ?int
@@ -24,24 +24,24 @@
                 return $this;
         }
         
-        public function getNome(): ?int
+        public function getNome(): ?String
         {
                 return $this->nome;
         }
 
-        public function setNome(?int $nome): self
+        public function setNome(?String $nome): self
         {
                 $this->nome = $nome;
 
                 return $this;
         }
 
-        public function getDescProjevt(): ?int
+        public function getDescProject(): ?int
         {
                 return $this->descProject;
         }
 
-        public function setDescProjevt(?int $descProject): self
+        public function setDescProject(?String $descProject): self
         {
                 $this->descProject = $descProject;
 
@@ -53,7 +53,7 @@
                 return $this->dtInicio;
         }
 
-        public function setDtCriacao($dtInicio)
+        public function setInicio($dtInicio)
         {
                 $this->dtInicio = $dtInicio;
 
