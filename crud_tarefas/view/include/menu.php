@@ -2,7 +2,7 @@
 require_once(__DIR__ . "/../../util/config.php");
 ?>
 
-<nav class="m-3 p-10 mb-5">
+<nav class=" p-10 mb-5">
     <ul class="nav nav-tabs justify-content-center">
         <li class="nav-item">
             <a class="nav-link active" href="<?= BASE_URL ?>/index.php">Home</a>

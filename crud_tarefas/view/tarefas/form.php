@@ -14,105 +14,117 @@ $projetos = $projetoCont->listar();
     echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Tarefa</h3>
 
-<form action="" method="POST" id="form">
+<div class="row g-5 col-md-12 m-2">
+    <form action="" method="POST" id="form" class="row g-3">
 
 
-    <div>
-        <label for="txtTitulo">Título:</label>
-        <input type="text" name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
-    </div>
+        <div class="col-md-4">
+            <label for="txtTitulo">Título:</label>
+            <input type="text" class="form-control"  name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
+        </div>
 
-    <br>
+        <br>
 
-    <div>
-        <label for="txtDesc">Descrição:</label>
-        <input type="text" name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
-    </div>
+        <div class="col-md-6">
+            <label for="txtDesc">Descrição:</label>
+            <input type="text" class="form-control"  name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
+        </div>
 
-    <br>
+        <br>
 
-    <div>
-        <label for="txtDtCriacao">Data de Criação:</label>
-        <input type="date" name="dtCriacao" id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
-    </div>
+        <div class="col-md-3">
+            <label for="txtDtCriacao">Data de Criação:</label>
+            <input type="date" name="dtCriacao" class="form-control"  id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
+        </div>
 
-    <br>
+        <br>
 
-    <div>
-        <label for="selStatus">Status de andamento:</label>
-        <select name="status" id="selStatus">
-            <option value="">--Selecione--</option>
-            <option value="A" <?php echo ($tarefa && $tarefa->getTrStatus() == 'A' ? 'selected' : ''); ?>>Andamento</option>
-            <option value="P" <?php echo ($tarefa && $tarefa->getTrStatus() == 'P' ? 'selected' : ''); ?>>Pendente</option>
-            <option value="C" <?php echo ($tarefa && $tarefa->getTrStatus() == 'C' ? 'selected' : ''); ?>>Concluído</option>
-        </select>
-    </div>
+        <div class="col-md-3">
+            <label for="selStatus">Status de andamento:</label>
+            <select name="status" id="selStatus" class="form-control" >
+                <option value="">--Selecione--</option>
+                <option value="A" <?php echo ($tarefa && $tarefa->getTrStatus() == 'A' ? 'selected' : ''); ?>>Andamento</option>
+                <option value="P" <?php echo ($tarefa && $tarefa->getTrStatus() == 'P' ? 'selected' : ''); ?>>Pendente</option>
+                <option value="C" <?php echo ($tarefa && $tarefa->getTrStatus() == 'C' ? 'selected' : ''); ?>>Concluído</option>
+            </select>
+        </div>
 
-    <br>
+        <br>
 
-    <label for="selProjeto">Projeto Vinculado:</label>
-    <select name="projeto" id="selProjeto">
-        <option value="">--Selecione o Projeto--</option>
-        <!--<option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
-        <option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
+        <div class="col-md-2">
+            <label for="selProjeto">Projeto Vinculado:</label>
+            <select name="projeto" id="selProjeto" class="form-control" >
+                <option value="">--Selecione o Projeto--</option>
+                <!--<option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
+                <option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
 
-        <?php foreach ($projetos as $projeto) : ?>
-            <option value="<?= $projeto->getId(); ?>" <?php
-                                                        if (
-                                                            $tarefa && $tarefa->getProjeto() &&
-                                                            $tarefa->getProjeto()->getId() == $projeto->getId()
-                                                        )
-                                                            echo 'selected';
-                                                        ?>>
-                <?= $projeto->getNome(); ?>
-            </option>
-        <?php endforeach ?>
-    </select>
-
-    <br>
-    <br>
-
-    <div>
-        <label for="selUsuario">Usuário:</label>
-            <select name="usuario" id="selUsuario">
-                <option value="">--Selecione o Usuário--</option>
-                <?php foreach ($usuarios as $usuario) : ?>
-                    <option value="<?= $usuario->getId(); ?>" <?php
+                <?php foreach ($projetos as $projeto) : ?>
+                    <option value="<?= $projeto->getId(); ?>" <?php
                                                                 if (
-                                                                    $tarefa && $tarefa->getUsuario() &&
-                                                                    $tarefa->getUsuario()->getId() == $usuario->getId()
+                                                                    $tarefa && $tarefa->getProjeto() &&
+                                                                    $tarefa->getProjeto()->getId() == $projeto->getId()
                                                                 )
                                                                     echo 'selected';
                                                                 ?>>
-                        <?= $usuario->getNome(); ?>
+                        <?= $projeto->getNome(); ?>
                     </option>
                 <?php endforeach ?>
             </select>
-    </div>
+        </div>
 
-    <br>
-    <br>
+        <br>
+        <br>
+
+        <div class="col-md-2">
+            <label for="selUsuario">Usuário:</label>
+                <select name="usuario" id="selUsuario"  class="form-control">
+                    <option value="">--Selecione o Usuário--</option>
+                    <?php foreach ($usuarios as $usuario) : ?>
+                        <option value="<?= $usuario->getId(); ?>" <?php
+                                                                    if (
+                                                                        $tarefa && $tarefa->getUsuario() &&
+                                                                        $tarefa->getUsuario()->getId() == $usuario->getId()
+                                                                    )
+                                                                        echo 'selected';
+                                                                    ?>>
+                            <?= $usuario->getNome(); ?>
+                        </option>
+                    <?php endforeach ?>
+                </select>
+        </div>
+
+        <br>
+        <br>
 
 
-    <input type="hidden" name="id" value="<?php echo ($tarefa ? $tarefa->getId() : 0); ?>" />
-    <input type="hidden" name="submetido" value="1" />
+        <input type="hidden" name="id" value="<?php echo ($tarefa ? $tarefa->getId() : 0); ?>" />
+        <input type="hidden" name="submetido" value="1" />
 
-    <button type="submit">Submeter</button>
-    <button type="reset">Limpar</button>
+        <div class="row g-3 text-center ">
+            <div class="col md-6">
+                <button type="submit">Submeter</button>
+            </div>
+            <div class="col md-6">
+                <button type="reset">Limpar</button>
+            </div>
 
-</form>
-
-    <div style="color: red;">
+            <div style="color: red;" class="valid-feedback">
                                                             
-        <?php echo $msgErro; ?>
+            <?php echo $msgErro; ?>
 
-    </div>
+        </div>
 
-    <br>
+            <br>
 
-        <a href="listar.php">Voltar</a>
+                <a href="listar.php">Voltar</a>
 
-    </div>
+            </div>
+        </div>
+
+    </form>
+
+    
+</div>
 
 <?php
 include_once(__DIR__ . "/../include/footer.php");
