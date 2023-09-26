@@ -104,9 +104,9 @@ $usuarios = $usuarioCont->listarUsuarios();
         <input type="hidden" name="id" value="<?php echo ($tarefa ? $tarefa->getId() : 0); ?>" />
         <input type="hidden" name="submetido" value="1" />
 
-        <div class="row g-3 text-center ">
+       <!-- <div class="row g-3 text-center ">
             <div class="col md-6">
-                <button type="submit">Submeter</button>
+                <button type="submitido">Submeter</button>
             </div>
             <div class="col md-6">
                 <button type="reset">Limpar</button>
@@ -123,9 +123,25 @@ $usuarios = $usuarioCont->listarUsuarios();
                 <a href="listar.php">Voltar</a>
 
             </div>
-        </div>
+        </div> -->
+
+    <!-- </form> -->
+    <button type="submit">Submeter</button>
+        <button type="reset">Limpar</button>
 
     </form>
+
+        <div style="color: red;">
+                                                                
+            <?php echo $msgErro; ?>
+
+        </div>
+
+        <br>
+
+            <a href="listar.php">Voltar</a>
+
+        </div>
 
     
 </div>
