@@ -49,7 +49,11 @@ ALTER TABLE tarefas ADD CONSTRAINT fk_usuarios FOREIGN KEY (id_usuario) REFERENC
 /* neste pensei no caso de o usuário ter o nome do projeto que está gerindo */
 
 /*Insertes de projeto*/
-INSERT INTO projetos (nome, descProject, dtInicio) VALUES ('PROJETO1', 'DESCPROJETO1', '20230912');
+INSERT INTO projetos (nome, descProject, dtInicio) 
+VALUES ('PROJETO1', 'DESCPROJETO1', '20230912'),
+        ('PROJETO2', 'DESCPROJETO2', '20230913'),
+        ('PROJETO3', 'DESCPROJETO3', '20230914'),
+        ('PROJETO4', 'DESCPROJETO4', '20230915');
 
 /*Insertes de usuario*/
 INSERT INTO usuarios (nome, email, senhar) VALUES ('ju', 'juju123@gmail.com', '12345');

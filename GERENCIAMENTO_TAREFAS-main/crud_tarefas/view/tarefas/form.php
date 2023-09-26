@@ -2,11 +2,15 @@
 // Formulário para Tarefas
 
 include_once(__DIR__ . "/../../controller/ProjetoController.php");
+include_once(__DIR__ . "/../../controller/UsuarioController.php");
 include_once(__DIR__ . "/../include/header.php");
 
 $projetoCont = new ProjetoController();
 $projetos = $projetoCont->listar();
 //print_r($projetos);
+
+$usuarioCont = new UsuarioController();
+$usuarios = $usuarioCont->listarUsuarios();
 
 ?>
 
@@ -55,8 +59,8 @@ $projetos = $projetoCont->listar();
             <label for="selProjeto">Projeto Vinculado:</label>
             <select name="projeto" id="selProjeto" class="form-control" >
                 <option value="">--Selecione o Projeto--</option>
-                <!--<option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
-                <option value="<?php echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
+                <!--<option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
+                <option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
 
                 <?php foreach ($projetos as $projeto) : ?>
                     <option value="<?= $projeto->getId(); ?>" <?php
