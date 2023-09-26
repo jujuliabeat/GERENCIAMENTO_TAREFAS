@@ -79,9 +79,11 @@
             $conn = Connection::getConnection();
     
             $sql = "SELECT a.*," . 
+                    " u.nome AS nome_usuario, " . 
                     " p.nome AS nome_projeto" . 
                     " FROM tarefas a" .
                     " JOIN projetos p ON (p.id = a.id_projeto)" .
+                    " JOIN usuarios u ON (u.id = a.id_usuario)" .
                     " WHERE a.id = ?";
     
             $stmt = $conn->prepare($sql);

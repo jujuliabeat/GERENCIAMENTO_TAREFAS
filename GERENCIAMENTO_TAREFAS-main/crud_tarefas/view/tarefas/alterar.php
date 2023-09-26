@@ -59,11 +59,11 @@ if(isset($_POST['submetido'])) {
         // print_r($erros);
     }
 
-}/*else {
+}else {
     //Usuário apenas entrou na página para alterar
     $idtarefa = 0;
-    if(isset($_GET['idtarefa']))
-        $idtarefa = $_GET['idtarefa'];
+    if(isset($_GET['idTarefa']))
+        $idtarefa = $_GET['idTarefa'];
 
     
     $tarefa =  $tarefaCont->buscarPorId($idtarefa);
@@ -73,7 +73,7 @@ if(isset($_POST['submetido'])) {
         echo "<a href='listar.php'><br>Voltar</a>";
         exit;
     }
-}*/
+}
 
 //Inclui o formulário
 include_once(__DIR__ . "/form.php");
