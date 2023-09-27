@@ -22,6 +22,20 @@ require_once(__DIR__."/../model/Usuario.php");
                 
             } 
 
+              if($_SERVER["REQUEST_METHOD"] == "POST") {
+                $confSenha = $_POST["confSenha"];
+                if ($confSenha == $confSenha) {
+                    // As senhas coincidem, você pode prosseguir com o registro do usuário
+                    // Aqui você pode usar a classe UsuarioService para criar o usuário ou fazer outras operações.
+                    echo "As senhas coincidem. Você pode prosseguir com o registro.";
+                } else {
+                    // As senhas não coincidem, exiba uma mensagem de erro
+                    echo "As senhas não coincidem. Por favor, tente novamente.";
+                }
+            
+
+            }   
+
             /*if ($senha !== $confirmarSenha) {
             array_push($erros, "A senha e a confirmação de senha não coincidem!");
             }*/
