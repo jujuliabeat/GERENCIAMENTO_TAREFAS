@@ -19,7 +19,6 @@
         $nome = trim($_POST['nome']) ? trim($_POST['nome']) : null;
         $email = trim($_POST['email']) ? trim($_POST['email']) : null;
         $senhar = trim($_POST['senhar']) ? trim($_POST['senhar']) : null;
-        $senhar = trim($_POST['senhar']) ? trim($_POST['senhar']) : null;
         
         // Criar um Objeto usuario para persistência
 

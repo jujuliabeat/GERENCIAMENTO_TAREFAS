@@ -11,7 +11,7 @@ define("DB_PASSWORD", "bancodedados");
 
 // Constante co a URL do sistema
 
-define("BASE_URL", "/PHP2023/GERENCIAMENTO_TAREFAS-main/GERENCIAMENTO_TAREFAS-main/crud_tarefas"); //Lab. 1
+define("BASE_URL", "/PHP2023/GERENCIAMENTO_TAREFAS/crud_tarefas"); //Lab. 1 JUH
 
 //define("BASE_URL", "/trabalhos/GERENCIAMENTO_TAREFAS/crud_tarefas"); //not juh
 
