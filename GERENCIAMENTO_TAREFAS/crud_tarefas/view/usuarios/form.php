@@ -39,11 +39,10 @@ $projetos = $projetoCont->listar();
 
         <br>
 
-        <!-- <div>
-            <label for="txtConfSenha">Confirme senha:</label>
-            <input type="password" name="confirmar_senha" id="txtConfSenha" value="<?php echo ($usuario ? $usuario->getSenhar() : ''); ?>" />
-        </div> -->
+        <label for="confirma_senha">Confirme a senha:</label>
+    	<input type="password" id="confirma_senha" name="confirma_senha">
 
+        <br>
         <br>
 
 

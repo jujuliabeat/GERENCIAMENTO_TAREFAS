@@ -16,7 +16,7 @@ if (isset($_POST['submetido'])) {
     $nome = trim($_POST['nome']) ? trim($_POST['nome']) : null;
     $email = trim($_POST['email']) ? trim($_POST['email']) : null;
     $senhar = trim($_POST['senhar']) ? trim($_POST['senhar']) : null;
-
+    $confirmaSenha = trim($_POST['confirma_senha']) ? trim($_POST['confirma_senha']) : null;
 
     $idUsuario = $_POST['id'];
     
@@ -31,16 +31,14 @@ if (isset($_POST['submetido'])) {
     $usuarioCont = new UsuarioController();
     $erros = $usuarioCont->inserir($usuario);
 
-    if(! $erros) {
+    if ($senhar !== $confirmaSenha) {
+        $msgErro = "A senha e a confirmação de senha não coincidem. Por favor, tente novamente.";
+    } else if(! $erros) {
         // Redirecionar para o listar
         header("location: listar.php");
         exit;
 
-    } else {
-        $msgErro = implode("<br>",$erros);
-        // print_r($erros);
-    }
-
+    } 
 }else {
     //Usuário apenas entrou na página para alterar
     $idUsuario = 0;
