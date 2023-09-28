@@ -36,13 +36,17 @@ error_reporting(E_ALL);
                 " WHERE id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$usuario->getNome(), $usuario->getEmail(), 
-                        $usuario->getSenhar()]);
+                        $usuario->getSenhar(), $usuario->getId()]);
         }
         
 
         public function deleteById(int $id) {
             $conn = Connection::getConnection();
     
+            $sqlDeleteTasks = "DELETE FROM tarefas WHERE id_usuario = ?";
+            $stmtDeleteTasks = $conn->prepare($sqlDeleteTasks);
+            $stmtDeleteTasks->execute([$id]);
+
             $sql = "DELETE FROM usuarios WHERE id = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$id]);

@@ -22,7 +22,7 @@ require_once(__DIR__."/../model/Usuario.php");
                 
             } 
 
-              if($_SERVER["REQUEST_METHOD"] == "POST") {
+            /*  if($_SERVER["REQUEST_METHOD"] == "POST") {
                 $confSenha = $_POST["confSenha"];
                 if ($confSenha == $confSenha) {
                     // As senhas coincidem, você pode prosseguir com o registro do usuário
@@ -34,7 +34,7 @@ require_once(__DIR__."/../model/Usuario.php");
                 }
             
 
-            }   
+            }   */
 
             /*if ($senha !== $confirmarSenha) {
             array_push($erros, "A senha e a confirmação de senha não coincidem!");
