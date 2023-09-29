@@ -18,34 +18,34 @@ $usuarios = $usuarioCont->listarUsuarios();
     echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Tarefa</h3>
 
-<div class="row g-5 col-md-12 m-2 p-5">
+<div class="row g-5 col-md-12 m-2 p-3">
     <form action="" method="POST" id="form" class="row g-3">
 
 
         <div class="col-md-4">
-            <label for="txtTitulo">Título:</label>
-            <input type="text" class="form-control"  name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
+            <label for="txtTitulo" style="color:black;"  >Título:</label>
+            <input  style="background-color: MediumOrchid;" type="text" class="form-control"  name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
         </div>
 
         <br>
 
         <div class="col-md-6">
-            <label for="txtDesc">Descrição:</label>
-            <input type="text" class="form-control"  name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
+            <label for="txtDesc" style="color:black;" >Descrição:</label>
+            <input style="background-color: MediumOrchid;" type="text" class="form-control"  name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
+        </div>
+
+        <br><br><br><br>
+
+        <div class="col-md-3">
+            <label for="txtDtCriacao" style="color:black;" >Data de Criação:</label>
+            <input style="background-color: MediumOrchid;" type="date" name="dtCriacao" class="form-control"  id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
         </div>
 
         <br>
 
         <div class="col-md-3">
-            <label for="txtDtCriacao">Data de Criação:</label>
-            <input type="date" name="dtCriacao" class="form-control"  id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
-        </div>
-
-        <br>
-
-        <div class="col-md-3">
-            <label for="selStatus">Status de andamento:</label>
-            <select name="status" id="selStatus" class="form-control" >
+            <label for="selStatus" style="color:black;" >Status de andamento:</label>
+            <select style="background-color: MediumOrchid;" name="status" id="selStatus" class="form-control" >
                 <option value="">--Selecione--</option>
                 <option value="A" <?php echo ($tarefa && $tarefa->getTrStatus() == 'A' ? 'selected' : ''); ?>>Andamento</option>
                 <option value="P" <?php echo ($tarefa && $tarefa->getTrStatus() == 'P' ? 'selected' : ''); ?>>Pendente</option>
@@ -55,9 +55,9 @@ $usuarios = $usuarioCont->listarUsuarios();
 
         <br>
 
-        <div class="col-md-2">
-            <label for="selProjeto">Projeto Vinculado:</label>
-            <select name="projeto" id="selProjeto" class="form-control" >
+        <div class="col-md-3">
+            <label for="selProjeto" style="color:black;" >Projeto Vinculado:</label>
+            <select  style="background-color: MediumOrchid;" name="projeto" id="selProjeto" class="form-control" >
                 <option value="">--Selecione o Projeto--</option>
                 <!--<option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
                 <option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
@@ -80,8 +80,8 @@ $usuarios = $usuarioCont->listarUsuarios();
         <br>
 
         <div class="col-md-2">
-            <label for="selUsuario">Usuário:</label>
-                <select name="usuario" id="selUsuario"  class="form-control">
+            <label for="selUsuario" style="color:black;" >Usuário:</label>
+                <select style="background-color: MediumOrchid;" name="usuario" id="selUsuario"  class="form-control">
                     <option value="">--Selecione o Usuário--</option>
                     <?php foreach ($usuarios as $usuario) : ?>
                         <option value="<?= $usuario->getId(); ?>" <?php
@@ -98,7 +98,7 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div>
 
         <br>
-        <br>
+        <br><br><br><br>
 
 
         <input type="hidden" name="id" value="<?php echo ($tarefa ? $tarefa->getId() : 0); ?>" />
@@ -126,7 +126,7 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div> -->
 
     <!-- </form> -->
-    <button type="submit">Submeter</button>
+    <button type="submit" >Submeter</button>
         <button type="reset">Limpar</button>
 
     </form>
@@ -139,9 +139,16 @@ $usuarios = $usuarioCont->listarUsuarios();
 
         <br>
 
-            <a href="listar.php">Voltar</a>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+              <button><a href="<?= BASE_URL ?>/view/tarefas/listar.php" class="card-link text-decoration-none text-white">Voltar</a></button>
+            </li>
+          </ul>
+       <!-- <div class="col-md-12 mt-3" >
 
-        </div>
+            <a href="listar.php" class="btn btn-link" style="text-decoration: none;">Voltar</a>
+
+        </div>-->
 
     
 </div>

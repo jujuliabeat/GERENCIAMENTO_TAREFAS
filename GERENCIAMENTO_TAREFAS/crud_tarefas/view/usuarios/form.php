@@ -10,40 +10,43 @@ $projetos = $projetoCont->listar();
 
 ?>
 
-    <h3>
-        <?php
-        echo (!$usuario || $usuario->getId() <= 0 ? 'Inserir' : 'Alterar');
-        ?> Usuarios</h3>
+<h3>
+    <?php
+    echo (!$usuario || $usuario->getId() <= 0 ? 'Inserir' : 'Alterar');
+    ?> Usuarios</h3>
 
-    <form action="" method="POST" id="form">
+<div class="row g-5 col-md-12 m-2 p-3">
+    <form action="" method="POST" id="form" class="row g-3">
 
 
-        <div>
-            <label for="txtNome">Nome:</label>
-            <input type="text" name="nome" id="txtNome" value="<?php echo ($usuario ? $usuario->getNome() : ""); ?>" />
+        <div class="col-md-4">
+            <label for="txtNome" style="color: black;">Nome:</label>
+            <input style="background-color: MediumOrchid;" type="text" class="form-control" name="nome" id="txtNome" value="<?php echo ($usuario ? $usuario->getNome() : ""); ?>" />
         </div>
 
         <br>
 
-        <div>
-            <label for="txtEmail">E-mail:</label>
-            <input type="email" name="email" id="txtEmail" value="<?php echo ($usuario ? $usuario->getEmail() : ''); ?>" />
+        <div class="col-md-6">
+            <label for="txtEmail" style="color: black;">E-mail:</label>
+            <input style="background-color: MediumOrchid;" type="email" class="form-control" name="email" id="txtEmail" value="<?php echo ($usuario ? $usuario->getEmail() : ''); ?>" />
+        </div>
+
+        <br><br><br><br>
+
+        <div class="col-md-4">
+            <label for="txtSenha" style="color: black;">Crie uma senha:</label>
+            <input style="background-color: MediumOrchid;" type="password" name="senhar" class="form-control" id="txtSenha" value="<?php echo ($usuario ? $usuario->getSenhar() : ''); ?>" />
+        </div>
+
+        <br><br><br>
+
+        <div class="col-md-4"> 
+            <label  for="confirma_senha" style="color: black;">Confirme a senha:</label>
+            <input style="background-color: MediumOrchid;" type="password" id="confirma_senha" class="form-control" name="confirma_senha">
         </div>
 
         <br>
-
-        <div>
-            <label for="txtSenha">Elabore uma senha:</label>
-            <input type="password" name="senhar" id="txtSenha" value="<?php echo ($usuario ? $usuario->getSenhar() : ''); ?>" />
-        </div>
-
-        <br>
-
-        <label for="confirma_senha">Confirme a senha:</label>
-    	<input type="password" id="confirma_senha" name="confirma_senha">
-
-        <br>
-        <br>
+        <br><br><br>
 
 
         <input type="hidden" name="id" value="<?php echo ($usuario ? $usuario->getId() : 0); ?>" />
@@ -54,19 +57,24 @@ $projetos = $projetoCont->listar();
 
     </form>
 
-        <div style="color: red;">
-                                                                
-            <?php echo $msgErro; ?>
+    <div style="color: red;">
 
-        </div>
+        <?php echo $msgErro; ?>
 
-        <br>
+    </div>
 
-            <a href="listar.php">Voltar</a>
+    <br>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+            <button><a href="<?= BASE_URL ?>/view/usuarios/listar.php" class="card-link text-decoration-none text-white">Voltar</a></button>
+        </li>
+    </ul>
 
-        </div>
+    <!--  <a href="listar.php">Voltar</a>
 
-    
+        </div>-->
+
+
 </div>
 
 <?php

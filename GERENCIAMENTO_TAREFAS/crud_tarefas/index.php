@@ -39,9 +39,12 @@ include_once(__DIR__ . "/view/include/header.php");
         </div>
       </div>
     </div>
+    
   </div>
 </div>
 
+<div>
+ 
 
 <?php
 include_once(__DIR__ . "/view/include/footer.php");

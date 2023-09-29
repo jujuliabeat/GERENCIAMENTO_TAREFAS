@@ -47,7 +47,34 @@
             padding: 2%;
         }
 
-    </style> 
+       /* .dark-mode {
+        background-color: black;
+        color: white;
+        }
+
+        .light-mode {
+            background-color: white;
+            color: black;
+        }*/
+    </style>
+   
+    <!--<script>
+        
+        function darkMode() {
+       var element = document.body;
+       var content = document.getElementById("DarkModetext");
+       element.className = "dark-mode";
+       content.innerText = "Dark Mode Ativo";
+       }
+       function lightMode() {
+           var element = document.body;
+           var content = document.getElementById("DarkModetext");
+           element.className = "light-mode";
+           content.innerText = "Dark Mode Desabilitado";
+       }
+   </script>-->
+
+   
 
 </head>
 
