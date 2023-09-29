@@ -18,7 +18,7 @@ $usuarios = $usuarioCont->listarUsuarios();
     echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Tarefa</h3>
 
-<div class="row g-5 col-md-12 m-2">
+<div class="row g-5 col-md-12 m-2 p-5">
     <form action="" method="POST" id="form" class="row g-3">
 
 
