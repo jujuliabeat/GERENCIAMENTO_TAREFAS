@@ -1,7 +1,9 @@
-<?php
-    
-//model para Usuario 
 
+<?php
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);    
+//model para Usuario 
+require_once(__DIR__. "/../service/LoginService.php");
 require_once(__DIR__."/../util/Connection.php");
 
 class Usuario {

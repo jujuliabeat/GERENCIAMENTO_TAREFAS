@@ -42,6 +42,7 @@ CREATE TABLE usuarios (
   senha varchar(15) NOT NULL, 
   PRIMARY KEY (id) 
 );
+
 ALTER TABLE usuarios ADD CONSTRAINT uk_usuarios UNIQUE KEY (login);
 
 ALTER TABLE tarefas ADD CONSTRAINT fk_projetos FOREIGN KEY (id_projeto) REFERENCES projetos (id);
