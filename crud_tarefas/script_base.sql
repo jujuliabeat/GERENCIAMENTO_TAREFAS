@@ -39,7 +39,7 @@ CREATE TABLE usuarios (
   id int AUTO_INCREMENT NOT NULL, 
   nome varchar(40) NOT NULL, 
   email varchar(50) NOT NULL,
-  senhar varchar(10) NOT NULL,
+  senha varchar(10) NOT NULL,
   CONSTRAINT PKusuario PRIMARY KEY(id)
 );
 
@@ -52,5 +52,5 @@ ALTER TABLE tarefas ADD CONSTRAINT fk_usuarios FOREIGN KEY (id_usuario) REFERENC
 INSERT INTO projetos (nome, descProject, dtInicio) VALUES ('PROJETO1', 'DESCPROJETO1', '20230912');
 
 /*Insertes de usuario*/
-INSERT INTO usuarios (nome, email, senhar) VALUES ('ju', 'juju123@gmail.com', '12345');
+INSERT INTO usuarios (nome, email, senha) VALUES ('ju', 'juju123@gmail.com', '12345');
 

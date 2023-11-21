@@ -45,10 +45,8 @@
             $this->usuarioDAO->update($usuario);
             return array();
         }
-
         public function excluirPorId(int $id) {
            $this->usuarioDAO->deleteByID($id);
         }
-
     }
 ?>
