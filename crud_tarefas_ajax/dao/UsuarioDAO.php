@@ -103,7 +103,7 @@ error_reporting(E_ALL);
 
             return $usuarios;
         }
-        
+
         public function findByLoginSenha(string $login, string $senha) {
             $conn = Connection::getConnection();
     
@@ -119,10 +119,11 @@ error_reporting(E_ALL);
                die("Mais de um usuário encontrado para o login e senha!");
     
             $reg = $result[0];
-            $usuario = new Usuario($reg['id'], $reg['nome'], $reg['login'], $reg['senha']);
+            $usuario = new Usuario($reg['id'], $reg['nome'], $reg['login'], $reg['senha'],  $reg['email']);
                 
             return $usuario;
         }
-
+    
     }
+    
 ?>

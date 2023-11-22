@@ -40,9 +40,9 @@ CREATE TABLE usuarios (
   nome varchar(70) NOT NULL, 
   login varchar(15) NOT NULL,
   senha varchar(15) NOT NULL, 
+  email varchar(50) NOT NULL,
   PRIMARY KEY (id) 
 );
-
 ALTER TABLE usuarios ADD CONSTRAINT uk_usuarios UNIQUE KEY (login);
 
 ALTER TABLE tarefas ADD CONSTRAINT fk_projetos FOREIGN KEY (id_projeto) REFERENCES projetos (id);

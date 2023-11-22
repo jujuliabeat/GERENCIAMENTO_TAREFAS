@@ -1,9 +1,7 @@
-
 <?php
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);    
+    
 //model para Usuario 
-require_once(__DIR__. "/../service/LoginService.php");
+
 require_once(__DIR__."/../util/Connection.php");
 
 class Usuario {
@@ -12,9 +10,13 @@ class Usuario {
     private ?String $nome;
     private ?String $email;
     private ?String $senhar;
+    private ?String $login;
 
-    public function __construct() {
-        $this->id = 0;
+    public function __construct($id, $nome, $login, $senha) {
+        $this->id = $id;
+        $this->nome = $nome;
+        $this->login = $login;
+        $this->senha = $senha;
     }
 
     public function getId(): ?int
@@ -61,6 +63,18 @@ class Usuario {
         public function setSenhar($senhar)
         {
                 $this->senhar = $senhar;
+
+                return $this;
+        }
+
+        public function getLogin(): ?String
+        {
+                return $this->login;
+        }
+
+        public function setLogin(?String $login): self
+        {
+                $this->login = $login;
 
                 return $this;
         }
