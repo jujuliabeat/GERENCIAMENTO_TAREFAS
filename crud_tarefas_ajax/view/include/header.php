@@ -1,8 +1,7 @@
 <?php
     require_once(__DIR__ . "/../login/verifica.php");
 ?>
-<!DOCTYPE html>
-<html lang="pt-br">
+
     
 <!DOCTYPE html>
 <html lang="pt-br">

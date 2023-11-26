@@ -2,6 +2,7 @@
 // Formulário para Tarefas
 
 include_once(__DIR__ . "/../../controller/ProjetoController.php");
+include_once(__DIR__ . "/../../controller/UsuarioController.php");
 include_once(__DIR__ . "/../include/header.php");
 
 $projetoCont = new ProjetoController();

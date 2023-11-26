@@ -13,7 +13,8 @@ define("DB_PASSWORD", "");
 
 // define("BASE_URL", "/PHP2023/GERENCIAMENTO_TAREFAS-main/GERENCIAMENTO_TAREFAS-main/GERENCIAMENTO_TAREFAS/crud_tarefas"); //Lab. 1 JUH
 
-define("BASE_URL", "/trabalhos/CRUDS/CRUDS_Daniel-main/crud_tarefas_ajax"); //not juh
+// define("BASE_URL", "/trabalhos/CRUDS/CRUDS_Daniel-main/crud_tarefas_ajax"); //not juh
+define("BASE_URL", "/trabalhos/GERENCIAMENTO_TAREFAS/crud_tarefas_ajax"); //not juh 2
 
 //define("BASE_URL", "/Trabahos-php/GERENCIAMENTO_TAREFAS-main/GERENCIAMENTO_TAREFAS/crud_tarefas");
 
