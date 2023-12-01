@@ -31,7 +31,8 @@ CREATE TABLE projetos (
   nome varchar(30) NOT NULL,
   descProject VARCHAR(50) NOT NULL,
   dtInicio date NOT NULL,
-  CONSTRAINT PKprojetos PRIMARY KEY(id)
+  CONSTRAINT PKprojetos PRIMARY KEY(id),
+  id_usuario int not null
 );
 
 /* TABELA usuários */
@@ -48,6 +49,8 @@ ALTER TABLE usuarios ADD CONSTRAINT uk_usuarios UNIQUE KEY (login);
 ALTER TABLE tarefas ADD CONSTRAINT fk_projetos FOREIGN KEY (id_projeto) REFERENCES projetos (id);
 
 ALTER TABLE tarefas ADD CONSTRAINT fk_usuarios FOREIGN KEY (id_usuario) REFERENCES usuarios (id); 
+
+
 /* neste pensei no caso de o usuário ter o nome do projeto que está gerindo */
 
 /*Insertes de projeto*/

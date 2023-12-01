@@ -151,7 +151,7 @@ if (isset($_POST['submetido'])) {
                         <br>
                         <div class="row">
                             <div class="form-group text-center text-dark">
-                                <a href="../usuarios/form.php" class="text-white text-dark ml-3 text-decoration-none" style="color:#8255f9;"> Criar uma conta </a>
+                                <a href="../usuarios/inserir.php" class="text-white text-dark ml-3 text-decoration-none" style="color:#8255f9;"> Criar uma conta </a>
                             </div>
                         </div>
 

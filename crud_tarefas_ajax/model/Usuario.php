@@ -16,7 +16,7 @@ class Usuario {
         $this->id = $id;
         $this->nome = $nome;
         $this->login = $login;
-        $this->senha = $senha;
+        $this->senhar = $senha;
     }
 
     public function getId(): ?int

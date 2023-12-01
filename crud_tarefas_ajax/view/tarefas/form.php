@@ -54,29 +54,6 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div>
 
         <br>
-
-        <div class="col-md-3">
-            <label for="selProjeto" style="color:black;" >Projeto Vinculado:</label>
-            <select  style="background-color: #b84aff; " name="projeto" id="selProjeto" class="form-control text-light" >
-                <option value="">--Selecione o Projeto--</option>
-                <!--<option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
-                <option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
-
-                <?php foreach ($projetos as $projeto) : ?>
-                    <option value="<?= $projeto->getId(); ?>" <?php
-                                                                if (
-                                                                    $tarefa && $tarefa->getProjeto() &&
-                                                                    $tarefa->getProjeto()->getId() == $projeto->getId()
-                                                                )
-                                                                    echo 'selected';
-                                                                ?>>
-                        <?= $projeto->getNome(); ?>
-                    </option>
-                <?php endforeach ?>
-            </select>
-        </div>
-
-        <br>
         <br>
 
         <div class="col-md-2">
@@ -98,7 +75,29 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div>
 
         <br>
-        <br><br><br><br>
+        <br><br>
+        
+            <div class="col-md-3">
+            <label for="selProjeto" style="color:black;" >Projeto Vinculado:</label>
+            <select  style="background-color: #b84aff; " name="projeto" id="selProjeto" class="form-control text-light" >
+                <option value="">--Selecione o Projeto--</option>
+                <!--<option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
+                <option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
+
+                <?php foreach ($projetos as $projeto) : ?>
+                    <option value="<?= $projeto->getId(); ?>" <?php
+                                                                if (
+                                                                    $tarefa && $tarefa->getProjeto() &&
+                                                                    $tarefa->getProjeto()->getId() == $projeto->getId()
+                                                                )
+                                                                    echo 'selected';
+                                                                ?>>
+                        <?= $projeto->getNome(); ?>
+                    </option>
+                <?php endforeach ?>
+            </select>
+        </div>
+        <br><br>
 
 
         <input type="hidden" name="id" value="<?php echo ($tarefa ? $tarefa->getId() : 0); ?>" />

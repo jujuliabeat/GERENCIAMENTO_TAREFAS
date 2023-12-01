@@ -20,7 +20,7 @@ $usuarios = $usuarioCont->listarUsuarios();
     echo (!$usuario || $usuario->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Usuários</h3>
 
-    <form action="" method="POST" id="form" class="row g-3">
+    <form action="login.php" method="POST" id="form" class="row g-3">
 
 
         <div class="col-md-4">

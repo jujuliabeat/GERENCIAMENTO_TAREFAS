@@ -65,10 +65,8 @@ error_reporting(E_ALL);
         public function findById(int $id) {
             $conn = Connection::getConnection();
     
-            $sql = "SELECT a.*," . 
-            " u.nome AS nome_usuarios" . 
+            $sql = "SELECT a.*" .
             " FROM usuarios a" .
-            " JOIN usuarios u ON (u.id = a.id)" .
             " WHERE a.id = ?";
 
     
@@ -94,9 +92,8 @@ error_reporting(E_ALL);
 
             $usuarios = array();
                 foreach($result as $reg) {
-                    $u = new Usuario();
-                    $u->setId($reg['id'])->setNome($reg['nome'])->setEmail($reg['email'])
-                    ->setSenhar($reg['senha']);
+                    $u = new Usuario($reg['id'], $reg['nome'], $reg['login'], $reg['senha']);
+                    //$u->setEmail($reg['email']);
                 
                     array_push($usuarios, $u);
                 }
