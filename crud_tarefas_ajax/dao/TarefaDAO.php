@@ -130,5 +130,21 @@
             }
             return $tarefass;
         }
+
+        public function save(Tarefa $tarefa) {
+            $conn = Connection::getConnection();
+    
+            $sql = "INSERT INTO tarefas (dtCriacao, id_projetos)".
+                " VALUES (?, ?)";
+            $stmt = $conn->prepare($sql);
+            
+            try {
+                $stmt->execute([$tarefa->getDtCriacao(), $tarefa->getProjeto()->getId()]);
+            } catch (PDOException $e) {
+                return "Erro ao perisitir os dados na base de dados.";
+            }
+    
+            return null;
+        }
     }
 ?>

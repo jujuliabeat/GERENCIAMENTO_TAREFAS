@@ -1,3 +1,4 @@
+
 <?php
 // Formulário para Tarefas
 
@@ -14,38 +15,44 @@ $usuarios = $usuarioCont->listarUsuarios();
 
 ?>
 
-<div class="row g-5 col-md-12 m-2 p-3">
-    <h3 style="color:#b84aff;" class="text-center fw-normal"><?php
+<!-- #257e1a
+#469d37
+#66bc55
+#86db72
+#a6fa8f -->
+
+<div class="row g-4 col-md-12 m-2 p-3">
+    <h3 style="color:#1f7f15;" class="text-center fw-normal"><?php
     echo (!$tarefa || $tarefa->getId() <= 0 ? 'Inserir' : 'Alterar');
     ?> Tarefa</h3>
 
-    <form action="" method="POST" id="form" class="row g-3">
+    <form action="" method="POST" id="form" class="row g-3" name="frmCadastroTarefa">
 
 
-        <div class="col-md-4">
-            <label for="txtTitulo" style="color:black;"  >Título:</label>
-            <input  style="background-color: #b84aff; " type="text" class="form-control text-light"  name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
+        <div class="col-md-4 m-2">
+            <label for="txtTitulo" style="color:#529f43;"  >Título:</label>
+            <input  style="background-color:#ebffd0; color:#0d2b09;" placeholder="Insira um texto aqui" type="text" class="form-control"  name="titulo" id="txtTitulo" value="<?php echo ($tarefa ? $tarefa->getTitulo() : ""); ?>" />
         </div>
 
         <br>
 
-        <div class="col-md-6">
-            <label for="txtDesc" style="color:black;" >Descrição:</label>
-            <input style="background-color: #b84aff; " type="text" class="form-control text-light"  name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
+        <div class="col-md-6 m-2">
+            <label for="txtDesc" style="color:#529f43;" >Descrição:</label>
+            <input style="background-color:#ebffd0; color:#0d2b09;" placeholder="Diga-me o que pretendes.." type="text" class="form-control"  name="descricao" id="txtDesc" value="<?php echo ($tarefa ? $tarefa->getDescricao() : ''); ?>" />
         </div>
 
         <br><br><br><br>
 
         <div class="col-md-3">
-            <label for="txtDtCriacao" style="color:black;" >Data de Criação:</label>
-            <input style="background-color: #b84aff; " type="date" name="dtCriacao" class="form-control text-light"  id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
+            <label for="txtDtCriacao" style="color:#529f43;" >Data de Criação:</label>
+            <input style="background-color:#ebffd0; color:#0d2b09;" type="date" name="dtCriacao" class="form-control"  id="txtDtCriacao" value="<?php echo ($tarefa ? $tarefa->getDtCriacao() : ''); ?>" />
         </div>
 
         <br>
 
         <div class="col-md-3">
-            <label for="selStatus" style="color:black;" >Status de andamento:</label>
-            <select style="background-color: #b84aff; " name="status" id="selStatus" class="form-control text-light" >
+            <label for="selStatus" style="color:#529f43;" >Status de andamento:</label>
+            <select style="background-color:#ebffd0; color:#0d2b09;" name="status" id="selStatus" class="form-control" >
                 <option value="">--Selecione--</option>
                 <option value="A" <?php echo ($tarefa && $tarefa->getTrStatus() == 'A' ? 'selected' : ''); ?>>Andamento</option>
                 <option value="P" <?php echo ($tarefa && $tarefa->getTrStatus() == 'P' ? 'selected' : ''); ?>>Pendente</option>
@@ -57,9 +64,9 @@ $usuarios = $usuarioCont->listarUsuarios();
         <br>
 
         <div class="col-md-2">
-            <label for="selUsuario" style="color:black;" >Usuário:</label>
-                <select style="background-color: #b84aff; " name="usuario" id="selUsuario"  class="form-control text-light">
-                    <option value="">--Selecione o Usuário--</option>
+            <label for="selUsuario" style="color:#529f43;" >Usuário:</label>
+                <select style="background-color:#ebffd0; color:#0d2b09" name="usuario" id="selUsuario"  class="form-control"  onchange="buscarProjeto();">
+                    <option value="0">--Selecione--</option>
                     <?php foreach ($usuarios as $usuario) : ?>
                         <option value="<?= $usuario->getId(); ?>" <?php
                                                                     if (
@@ -77,26 +84,13 @@ $usuarios = $usuarioCont->listarUsuarios();
         <br>
         <br><br>
         
-            <div class="col-md-3">
-            <label for="selProjeto" style="color:black;" >Projeto Vinculado:</label>
-            <select  style="background-color: #b84aff; " name="projeto" id="selProjeto" class="form-control text-light" >
-                <option value="">--Selecione o Projeto--</option>
-                <!--<option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>
-                <option value="<?php //echo ($tarefa ? $tarefa->getProjeto() : ""); ?>"></option>-->
-
-                <?php foreach ($projetos as $projeto) : ?>
-                    <option value="<?= $projeto->getId(); ?>" <?php
-                                                                if (
-                                                                    $tarefa && $tarefa->getProjeto() &&
-                                                                    $tarefa->getProjeto()->getId() == $projeto->getId()
-                                                                )
-                                                                    echo 'selected';
-                                                                ?>>
-                        <?= $projeto->getNome(); ?>
-                    </option>
-                <?php endforeach ?>
-            </select>
-        </div>
+            <div class="col-md-3 mt-3">
+                <label for="selProjeto" style="color: #529f43;">Projeto Vinculado:</label>
+                <select style="background-color: #ebffd0; color:#0d2b09" id="selProjeto" name="projeto" class="form-control" 
+                    idSelecionado="<?php echo ($tarefa && $tarefa->getProjeto() ? $tarefa->getProjeto()->getId() : '0'); ?>">
+                    
+                </select>        
+            </div>
         <br><br>
 
 
@@ -125,9 +119,9 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div> -->
 
     <!-- </form> -->
-    <ul class="list-group list-group-flush text-center">
+    <ul class="list-group list-group-flush text-center mt-5">
             <li class="list-group-item">
-                <button class="rounded-3 p-2" style="background: #7074ff " type="submit" >Submeter</button>
+                <button class="rounded-3 p-2" style="background: #7074ff " type="submit" onclick="inserirTurma();">Submeter</button>
                 <button class="rounded-3 p-2" style="background: #7074ff " type="reset">Limpar</button>
                 <button class="rounded-3 p-2" style="background: #7074ff "> <a href="<?= BASE_URL ?>/view/tarefas/listar.php" class="card-link text-decoration-none text-white">Voltar</a></button>
             </li>
@@ -143,17 +137,11 @@ $usuarios = $usuarioCont->listarUsuarios();
         </div>
 
         <br>
-
-        
-       <!-- <div class="col-md-12 mt-3" >
-
-            <a href="listar.php" class="btn btn-link" style="text-decoration: none;">Voltar</a>
-
-        </div>-->
-
     
 </div>
 
 <?php
 include_once(__DIR__ . "/../include/footer.php");
 ?>
+
+<script src="js/tarefas.js"></script>

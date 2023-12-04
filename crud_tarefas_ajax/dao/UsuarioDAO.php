@@ -92,7 +92,7 @@ error_reporting(E_ALL);
 
             $usuarios = array();
                 foreach($result as $reg) {
-                    $u = new Usuario($reg['id'], $reg['nome'], $reg['login'], $reg['senha']);
+                    $u = new Usuario($reg['id'], $reg['nome'], $reg['email'], $reg['login'], $reg['senha']);
                     //$u->setEmail($reg['email']);
                 
                     array_push($usuarios, $u);

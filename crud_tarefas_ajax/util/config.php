@@ -13,8 +13,8 @@ define("DB_PASSWORD", "");
 
 
 
-// define("BASE_URL", "/trabalhos/CRUDS/CRUDS_Daniel-main/crud_tarefas_ajax"); //not juh
+define("BASE_URL", "/trabalhos/crud_tarefas_ajax"); //not juh
 //define("BASE_URL", "/trabalhos/GERENCIAMENTO_TAREFAS/crud_tarefas_ajax"); //not juh 2
 
-define("BASE_URL", "/GERENCIAMENTO_TAREFAS-main/crud_tarefas_ajax"); //not geo 
+// define("BASE_URL", "/GERENCIAMENTO_TAREFAS-main/crud_tarefas_ajax"); //not geo 
 

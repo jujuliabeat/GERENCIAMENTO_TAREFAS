@@ -1,3 +1,4 @@
+
 <?php
 // View para inserir Tarefas
 
@@ -13,6 +14,7 @@
 
     $msgErro = "";
     $tarefa = null;
+    $idUsuario = 0; //Utilizado para mater o ID do curso de forma provisória
 
     if (isset($_POST['submetido'])) {
         // echo 'clicou no gravar';
@@ -48,17 +50,21 @@
         $tarefaCont = new TarefaController();
         $erros = $tarefaCont->inserir($tarefa);
 
-        if(! $erros) {
-            // Redirecionar para o listar
-            header("location: listar.php");
-            exit;
-
-        } else {
-            $msgErro = implode("<br>",$erros);
-            // print_r($erros);
+        if ($idProjeto) {
+            $tarefa->setProjeto(new Projeto($idProjeto));
         }
 
-    }
+        $erros = $tarefaCont->salvar($tarefa);
+
+
+        if(empty($erros)) {
+            header("location: listar.php");
+            exit;
+        }
+
+        //print_r($erros);
+        $msgErro = implode("<br>", $erros);
+}
     
 // Inclui o formulario
 include_once(__DIR__."/form.php");

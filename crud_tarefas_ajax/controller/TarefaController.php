@@ -41,6 +41,20 @@
             return array();
         }
 
+        public function salvar(Tarefa $tarefa) {
+            $erros = $this->tarefaService->validarDados($tarefa);
+    
+            if(! empty($erros))
+                return $erros;
+            
+            $erroBanco = $this->tarefaDAO->save($tarefa); 
+            if($erroBanco)
+                return array($erroBanco);
+    
+            //Se tudo deu certo, retorna um array vazio
+            return array();
+        }
+
         public function atualizar(Tarefa $tarefa) {
             $erros = $this->tarefaService->validarDados($tarefa);
             if($erros) 
