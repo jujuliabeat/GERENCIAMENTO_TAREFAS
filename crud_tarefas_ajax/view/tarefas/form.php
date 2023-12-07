@@ -6,8 +6,10 @@ include_once(__DIR__ . "/../../controller/ProjetoController.php");
 include_once(__DIR__ . "/../../controller/UsuarioController.php");
 include_once(__DIR__ . "/../include/header.php");
 
-$projetoCont = new ProjetoController();
-$projetos = $projetoCont->listar();
+// form.php
+$projetoController = new ProjetoController();
+$projetoController->listar(); 
+
 //print_r($projetos);
 
 $usuarioCont = new UsuarioController();
@@ -121,7 +123,7 @@ $usuarios = $usuarioCont->listarUsuarios();
     <!-- </form> -->
     <ul class="list-group list-group-flush text-center mt-5">
             <li class="list-group-item">
-                <button class="rounded-3 p-2" style="background: #7074ff " type="submit" onclick="inserirTurma();">Submeter</button>
+                <button class="rounded-3 p-2" style="background: #7074ff " type="submit" onclick="inserirTarefa();">Submeter</button>
                 <button class="rounded-3 p-2" style="background: #7074ff " type="reset">Limpar</button>
                 <button class="rounded-3 p-2" style="background: #7074ff "> <a href="<?= BASE_URL ?>/view/tarefas/listar.php" class="card-link text-decoration-none text-white">Voltar</a></button>
             </li>

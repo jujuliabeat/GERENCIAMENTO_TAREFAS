@@ -4,14 +4,25 @@
 
     require_once(__DIR__ . "/Tarefa.php");
 
-    class Projeto {
+    class Projeto implements JsonSerializable {
 
         private ?int $id;
         private ?String $nome;
         private ?String $descProject;
         private ?String $dtInicio;
+        private ?Usuario $usuario;
     
-
+        public function jsonSerialize() : array {
+                return array("id" => $this->id,
+                "nome" => $this->nome,);
+            }
+        
+        
+            public function __toString()
+            {
+                return $this->nome;
+            }
+        
         public function getId(): ?int
         {
                 return $this->id;
@@ -59,6 +70,24 @@
 
              
                return $this;
+        }
+
+        /**
+         * Get the value of usuario
+         */
+        public function getUsuario(): ?Usuario
+        {
+                return $this->usuario;
+        }
+
+        /**
+         * Set the value of usuario
+         */
+        public function setUsuario(?Usuario $usuario): self
+        {
+                $this->usuario = $usuario;
+
+                return $this;
         }
     } 
 

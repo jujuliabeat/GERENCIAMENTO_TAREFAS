@@ -12,9 +12,8 @@
         }
             
         
-        public function listar() {
-
-            return $this->projetoDAO->list();
+        public function listar(int $idUser) {
+            return $this->projetoDAO->listByUser($idUser);
         }
 
     }
