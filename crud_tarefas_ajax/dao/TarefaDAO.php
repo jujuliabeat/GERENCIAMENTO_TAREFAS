@@ -20,7 +20,7 @@
         }
 
         public function insert(Tarefa $tarefa) {
-            $sql = "INSERT INTO  tarefas (titulo, descricao, dtCriacao, TrStatus, id_projeto, id_usuario)" . 
+            $sql = "INSERT INTO  tarefas (titulo, descricao, dtCriacao, TrStatus, id_projetos, id_usuario)" . 
             " VALUES(?, ?, ?, ?, ?, ?)";
 
             $stmt = $this->conn->prepare($sql);
@@ -66,7 +66,7 @@
                    " p.nome AS nome_projeto" . 
                    " FROM tarefas t" .
                    " JOIN usuarios u ON (u.id = t.id_usuario)" . 
-                   " JOIN projetos p ON (p.id = t.id_projeto)" . 
+                   " JOIN projetos p ON (p.id = t.id_projetos)" . 
                    " ORDER BY t.titulo";
             $stmt = $this->conn->prepare($sql);
             $stmt->execute();
@@ -120,7 +120,7 @@
                 $usuario->setNome($reg['nome_usuario']);
     
                 $projeto = new Projeto();
-                $projeto->setId($reg['id_projeto']);
+                $projeto->setId($reg['id_projetos']);
                 $projeto->setNome($reg['nome_projeto']);
     
                 $tarefas->setUsuario($usuario);

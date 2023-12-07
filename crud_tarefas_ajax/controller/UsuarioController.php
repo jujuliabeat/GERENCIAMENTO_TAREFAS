@@ -20,6 +20,7 @@
 
             return $this->usuarioDAO->listarUsuarios();
         }
+        
         public function buscarPorId(int $id) {
             return $this->usuarioDAO->findById($id);
         }

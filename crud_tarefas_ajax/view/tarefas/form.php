@@ -7,8 +7,11 @@ include_once(__DIR__ . "/../../controller/UsuarioController.php");
 include_once(__DIR__ . "/../include/header.php");
 
 // form.php
-$projetoController = new ProjetoController();
-$projetoController->listar(); 
+
+//$idUsuarioLogado = 1;
+
+//$projetoController = new ProjetoController();
+//$projetoController->listar($idUsuarioLogado); 
 
 //print_r($projetos);
 
@@ -142,8 +145,8 @@ $usuarios = $usuarioCont->listarUsuarios();
     
 </div>
 
+<script src="js/tarefas.js"></script>
+
 <?php
 include_once(__DIR__ . "/../include/footer.php");
 ?>
-
-<script src="js/tarefas.js"></script>

@@ -6,7 +6,7 @@
 
     class Projeto implements JsonSerializable {
 
-        private ?int $id;
+        private ?int $id = null;
         private ?String $nome;
         private ?String $descProject;
         private ?String $dtInicio;

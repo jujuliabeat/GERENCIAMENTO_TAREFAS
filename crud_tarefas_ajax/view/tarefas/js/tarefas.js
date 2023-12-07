@@ -1,4 +1,4 @@
-const baseURL = document.getElementById('txtTitulo') . value;
+const baseURL = "/LProgWeb-3Bim/GERENCIAMENTO_TAREFAS-main/crud_tarefas_ajax";
 
 const inputDesc = document.getElementById('txtDesc');
 const inputDtCriacao= document.getElementById('txtDtCriacao');

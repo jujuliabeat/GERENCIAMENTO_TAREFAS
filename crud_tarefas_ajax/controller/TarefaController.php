@@ -6,7 +6,7 @@
     require_once(__DIR__."/../model/Tarefa.php");
     require_once(__DIR__."/../service/TarefaService.php");
     
-    class TarefaController {
+    class TarefaController{
 
         private $tarefaDAO;
         private $tarefaService;

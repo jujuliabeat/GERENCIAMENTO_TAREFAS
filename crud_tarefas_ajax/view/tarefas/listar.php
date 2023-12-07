@@ -32,7 +32,7 @@ $tarefas = $tarefaCont->listar();
                     <td>Descricação</td>
                     <td>Data de criação</td>
                     <td>Status da atividade</td>
-                    <td>Projeto vinculado</td>
+                    <td>Projeto Associado</td>
                     <td>Usuario vinculado</td>
                     <td>Alterar</td>
                     <td>Excluir</td>

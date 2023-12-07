@@ -11,17 +11,17 @@ ALTER TABLE usuarios ADD CONSTRAINT uk_usuarios UNIQUE KEY (login);
 
 
 /*Inserts usuarios*/
-INSERT INTO usuarios (nome, login, senha) VALUES ('Sr. Administrador', 'admin', 'admin');
-INSERT INTO usuarios (nome, login, senha) VALUES ('Sr. Root', 'root', 'root');
-INSERT INTO usuarios (nome, login, senha) VALUES ('Sra.Juh', 'juh', 'juh');
-INSERT INTO usuarios (nome, login, senha) VALUES ('Sra. Geovana', 'geo', 'geo');
+INSERT INTO usuarios (nome, login, senha, email) VALUES ('Sr. Administrador', 'admin', 'admin', 'admin@ifpr.edu.br');
+INSERT INTO usuarios (nome, login, senha, email) VALUES ('Sr. Root', 'root', 'root', 'root@ifpr.edu.br');
+INSERT INTO usuarios (nome, login, senha, email) VALUES ('Sra.Juh', 'juh', 'juh', 'juh@ifpr.edu.br');
+INSERT INTO usuarios (nome, login, senha, email) VALUES ('Sra. Geovana', 'geo', 'geo', 'geo@ifpr.edu.br');
 
 /* TABELA projetos */
 CREATE TABLE projetos ( 
   id int AUTO_INCREMENT NOT NULL, 
   nome varchar(30) NOT NULL,
-  descProject varchar(30) NOT NULL,
-  dtInicio date NOT NULL,
+  descProject varchar(30),
+  dtInicio date,
   id_usuario int NOT NULL,
   CONSTRAINT pk_projetos PRIMARY KEY(id),
   FOREIGN KEY (id_usuario) REFERENCES usuarios (id)
