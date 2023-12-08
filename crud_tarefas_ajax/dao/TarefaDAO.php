@@ -134,14 +134,15 @@
         public function save(Tarefa $tarefa) {
             $conn = Connection::getConnection();
     
-            $sql = "INSERT INTO tarefas (dtCriacao, id_projetos)".
-                " VALUES (?, ?)";
+            $sql = "INSERT INTO tarefas (titulo, descricao, dtCriacao, TrStatus, id_projetos, id_usuario)" . 
+            " VALUES(?, ?, ?, ?, ?, ?)";
+
             $stmt = $conn->prepare($sql);
             
             try {
-                $stmt->execute([$tarefa->getDtCriacao(), $tarefa->getProjeto()->getId()]);
+                $stmt->execute([$tarefa->getTitulo(), $tarefa->getDescricao(), $tarefa->getDtCriacao(), $tarefa->getTrStatus(), $tarefa->getProjeto()->getId(), $tarefa->getUsuario()->getId()]);
             } catch (PDOException $e) {
-                return "Erro ao perisitir os dados na base de dados.";
+                return "Erro na persistência de dados.";
             }
     
             return null;

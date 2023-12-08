@@ -12,9 +12,10 @@ class Usuario {
     private ?String $senhar;
     private ?String $login;
 
-    public function __construct($id=null, $nome=null, $login=null, $senhar=null) {
+    public function __construct($id=null, $nome=null, $email = null, $login=null, $senhar=null) {
         $this->id = $id;
         $this->nome = $nome;
+        $this->email = $email;
         $this->login = $login;
         $this->senhar = $senhar;
     }

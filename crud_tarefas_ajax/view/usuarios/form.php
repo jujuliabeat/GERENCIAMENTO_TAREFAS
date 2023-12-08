@@ -5,8 +5,10 @@ include_once(__DIR__ . "/../../controller/ProjetoController.php");
 include_once(__DIR__ . "/../../controller/UsuarioController.php");
 include_once(__DIR__ . "/../include/header.php");
 
-$projetoCont = new ProjetoController();
-$projetos = $projetoCont->listar();
+$idUsuarioLogado = 1;
+
+$projetoController = new ProjetoController();
+$projetoController->listar($idUsuarioLogado); 
 //print_r($projetos);
 
 $usuarioCont = new UsuarioController();

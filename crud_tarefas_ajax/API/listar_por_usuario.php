@@ -2,10 +2,12 @@
 
     require_once(__DIR__. "/../controller/ProjetoController.php");
 
-    $idUsuario = $_GET['idUsuario'];
+    // Em listar_por_usuario.php
+    $idUsuario = isset($_GET['idUsuario']) ? (int)$_GET['idUsuario'] : 0;
 
-    $projectCont = new ProjetoController();
-    $projetos = $projectCont->listar($idUsuario);
+    $projetoController = new ProjetoController();
+    $projetos = $projetoController->listar($idUsuario);
+
 
     echo json_encode($projetos, JSON_UNESCAPED_UNICODE);
 ?>

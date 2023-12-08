@@ -1,38 +1,74 @@
 <?php
+// Formulário para Tarefas
+include_once(__DIR__ . "/../controller/ProjetoController.php");
+include_once(__DIR__ . "/../controller/UsuarioController.php");
+include_once(__DIR__ . "/../controller/TarefaController.php"); 
 
-    require_once (__DIR__."/../controller/TarefaController.php");
-    require_once (__DIR__."/../model/Tarefa.php");
-    require_once (__DIR__."/../model/Projeto.php");
+$idUsuarioLogado = 1;
 
-    // Capturar os parâmentros POST 
-    $titulo = is_numeric($_POST['titulo']) ? $_POST['titulo'] : null;
-    $descricao = is_numeric($_POST['descricao']) ? $_POST['descricao'] : null;
-    $trStatus = is_numeric($_POST['status']) ? $_POST['status'] : null;
-    $idProjeto = is_numeric($_POST['projeto']) ?  $_POST['projeto'] : 0;
-    $idUsuario = is_numeric($_POST['usuario']) ?  $_POST['usuario'] : 0;
+$projetoController = new ProjetoController();
+$projetos = $projetoController->listar($idUsuarioLogado);
 
-    $turma = new Tarefa();
+$usuarioCont = new UsuarioController();
+$usuarios = $usuarioCont->listarUsuarios();
 
-    $turma ->setDtCriacao($dtCriacao); 
-    
-    if($idProject) {
+$tarefaController = new TarefaController(); 
 
-        $project = new Projeto();
-        $project->setId($idProject);
-        $tarefa->setProjeto($project);
+$msgErro = ''; 
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Recupera os dados do formulário
+    $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
+    $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
+    $dtCriacao = isset($_POST['dtCriacao']) ? $_POST['dtCriacao'] : '';
+    $trStatus = isset($_POST['status']) ? $_POST['status'] : '';
+    $idUsuario = isset($_POST['usuario']) ? $_POST['usuario'] : '';
+    $idProjeto = isset($_POST['projeto']) ? $_POST['projeto'] : '';
+
+    // Valide os dados conforme sua lógica
+    if (empty($titulo) || empty($descricao) || empty($dtCriacao) || empty($trStatus) || empty($idUsuario) || empty($idProjeto)) {
+        $msgErro = 'Preencha todos os campos.';
+    } else {
+        // Cria uma instância de Tarefa e define suas propriedades
+        $tarefa = new Tarefa();
+        $tarefa->setTitulo($titulo);
+        $tarefa->setDescricao($descricao);
+        $tarefa->setDtCriacao($dtCriacao);
+        $tarefa->setTrStatus($trStatus);
+
+        $projeto = new Projeto();
+        $projeto->setId($idProjeto);
+        $usuario = new Usuario();
+        $usuario->setId($idUsuario);
+
+        $tarefa->setProjeto($projeto);
+        $tarefa->setUsuario($usuario);
+
+        // Chama o controlador para salvar a tarefa
+        $result = $tarefaController->salvar($tarefa);
+
+        // Verifica se houve algum erro ao salvar
+        $msgErro = "";
+        if($erros)
+            $msgErro = implode("<br>", $erros);
+
+        echo $msgErro;
+            }
+
+
+        echo json_encode([
+            'success' => true,
+            'tarefa' => [
+                'id' => $tarefa->getId(),
+                'titulo' => $tarefa->getTitulo(),
+                'descricao' => $tarefa->getDescricao(),
+                'dtCriacao' => $tarefa->getDtCriacao(),
+                'status' => $tarefa->getTrStatus(),
+                'projeto' => $tarefa->getProjeto()->getId(),
+                'usuario' => $tarefa->getUsuario()->getId(),
+                
+            ],
+        ]);
+
     }
-
-    // Chamar o controller para salvar a Tarefa 
-    $tarefaCont = new TarefaController();
-    $erros = $tarefaCont->salvar($tarefa);
-
-    // Retornar os erros ou uma string vazia se não houverem erros 
-    $msgErro = "";
-    if($erros)
-        $msgErro = implode("<br>" , $erros); 
-
-    echo $msgErro;
-
-    // echo $ano . " - " . $idCurso . " - " . $idDisc;
-
 ?>

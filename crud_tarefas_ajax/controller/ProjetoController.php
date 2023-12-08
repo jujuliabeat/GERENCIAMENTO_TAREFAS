@@ -13,7 +13,13 @@
             
         
         public function listar(int $idUser) {
-            return $this->projetoDAO->listByUser($idUser);
+         
+            if ($idUser > 0) {
+                return $this->projetoDAO->listByUser($idUser);
+            } else {
+    
+                return $idUser; 
+            }
         }
 
     }
