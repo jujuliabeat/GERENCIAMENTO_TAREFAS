@@ -56,19 +56,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
 
 
-        echo json_encode([
-            'success' => true,
-            'tarefa' => [
-                'id' => $tarefa->getId(),
-                'titulo' => $tarefa->getTitulo(),
-                'descricao' => $tarefa->getDescricao(),
-                'dtCriacao' => $tarefa->getDtCriacao(),
-                'status' => $tarefa->getTrStatus(),
-                'projeto' => $tarefa->getProjeto()->getId(),
-                'usuario' => $tarefa->getUsuario()->getId(),
-                
-            ],
-        ]);
-
     }
 ?>
